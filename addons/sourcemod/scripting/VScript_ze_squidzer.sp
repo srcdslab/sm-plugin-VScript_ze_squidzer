@@ -15,8 +15,8 @@ bool g_bEnableShooting;
 public Plugin myinfo = {
 	name		= "VScript ze_squidzer",
 	author		= "Dolly",
-	description = "Movement detection for the redlight greenlight game",
-	version 	= "1.0.0",
+	description 	= "Movement detection for the redlight greenlight game",
+	version 	= "1.0.1",
 	url 		= "https://github.com/srcdslab/sm-plugin-VScript_ze_squidzer"
 };
 
@@ -148,7 +148,7 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impluse) {
 		return Plugin_Continue;
 	}
 	
-	if(buttons & (IN_WALK | IN_JUMP | IN_FORWARD | IN_BACK | IN_RIGHT | IN_LEFT | IN_DUCK)) {
+	if(buttons & (IN_WALK | IN_JUMP | IN_FORWARD | IN_BACK | IN_MOVERIGHT | IN_MOVELEFT | IN_DUCK)) {
 		ForcePlayerSuicide(client);
 		EmitSoundToAll("rm_2_gun_shot.mp3");
 		return Plugin_Continue;
