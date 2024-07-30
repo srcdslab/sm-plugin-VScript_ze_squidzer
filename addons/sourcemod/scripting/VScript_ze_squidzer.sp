@@ -16,7 +16,7 @@ public Plugin myinfo = {
 	name		= "VScript ze_squidzer",
 	author		= "Dolly",
 	description 	= "Movement detection for the redlight greenlight game",
-	version 	= "1.0.1",
+	version 	= "1.0.2",
 	url 		= "https://github.com/srcdslab/sm-plugin-VScript_ze_squidzer"
 };
 
@@ -132,21 +132,21 @@ Action OnStartTouch(int entity, int other) {
 }
 
 public Action OnPlayerRunCmd(int client, int &buttons, int &impluse) {
-	if(!IsClientInGame(client)) {
-		return Plugin_Continue;
-	}
-	
 	if(!g_bEnableShooting) {
 		return Plugin_Continue;
 	}
 	
-	if(GetClientTeam(client) != CS_TEAM_CT || !IsPlayerAlive(client)) {
+	if(!IsClientInGame(client)) {
 		return Plugin_Continue;
 	}
 	
 	if(g_bIsClientSafe[client]) {
 		return Plugin_Continue;
 	}
+
+	if(GetClientTeam(client) != CS_TEAM_CT || !IsPlayerAlive(client)) {
+		return Plugin_Continue;
+	}	
 	
 	if(buttons & (IN_WALK | IN_JUMP | IN_FORWARD | IN_BACK | IN_MOVERIGHT | IN_MOVELEFT | IN_DUCK)) {
 		ForcePlayerSuicide(client);
